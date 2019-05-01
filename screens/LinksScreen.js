@@ -29,7 +29,7 @@ export default class LinksScreen extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('https://react-connection.000webhostapp.com/view.php')
+    return fetch('https://react-connection.000webhostapp.com/usuario/view.php')
     .then((response) => response.json())
     .then((responseJson) => {
       let ds = new ListView.DataSource({rowHasChanged: (r1, r2)=>r1 !== r2})
@@ -84,7 +84,7 @@ export default class LinksScreen extends React.Component {
           renderRow = {(rowData) =>
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
           )}>
-          {rowData.identificacion}
+          {rowData.id}
           </Text>
           }
 

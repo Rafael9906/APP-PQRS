@@ -36,6 +36,13 @@ export default class HomeScreen extends React.Component {
       }
     }
 
+    // variable to hold the references of the textfields
+inputs = {};
+// function to focus the field
+focusTheField = (id) => {
+  this.inputs[id].focus();
+}
+
     InsertUsers = () => {
       const {userID,userName,userEmail,userPhone,userPQRS,userComent} = this.state;
 
@@ -68,41 +75,51 @@ export default class HomeScreen extends React.Component {
         <View style={styles.container}>
         <Text>DATOS PERSONALES</Text>
 
-        <TextInput keyboardType='number-pad' maxLength = {10}
+        <TextInput keyboardType='number-pad' maxLength = {10} label={"Field 1"} returnKeyType = 'next'
          placeholder = 'Identificación'
          onChangeText = {TextInputValue => this.setState({userID: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
+         onSubmitEditing={() => { this.focusTheField('field2'); }}
+
        />
 
-       <TextInput
+       <TextInput  ref={input => { this.inputs['field2'] = input }}
+         label={"Field 2"} returnKeyType = 'next'
          placeholder = 'Nombre'
          onChangeText = {TextInputValue => this.setState({userName: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
+         onSubmitEditing={() => { this.focusTheField('field3'); }}
        />
 
-       <TextInput
+       <TextInput  ref={input => { this.inputs['field3'] = input }}
+         keyboardType='email-address' returnKeyType = 'next' 
+         label={"Field 3"}
          placeholder = 'Correo electrónico'
          onChangeText = {TextInputValue => this.setState({userEmail: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
+         onSubmitEditing={() => { this.focusTheField('field4'); }}
        />
 
-       <TextInput keyboardType='number-pad' maxLength = {10}
+       <TextInput ref={input => { this.inputs['field4'] = input }}
+         keyboardType='number-pad' maxLength = {10} returnKeyType = 'next'
          placeholder = 'Teléfono'
          onChangeText = {TextInputValue => this.setState({userPhone: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
+         onSubmitEditing={() => { this.focusTheField('field5'); }}
+
        />
 
         <Text>PQRS</Text>
 
-      <Picker
-        selectedValue={this.state.language}
-        style={{height: 100, width: 100}}
+      <Picker 
+        selectedValue={this.state.userPQRS}
+        style={{height: 44, width: 200}}
         onValueChange={(TextInputValue) =>
-          this.setState({userPQRS: TextInputValue})
+        this.setState({userPQRS: TextInputValue})
         }>
         <Picker.Item label="Tipo de PQRS" value="0" />
         <Picker.Item label="Petición" value="1" />
@@ -112,7 +129,7 @@ export default class HomeScreen extends React.Component {
       </Picker>
         
 
-        <TextInput
+        <TextInput ref={input => { this.inputs['field5'] = input }}
          placeholder = 'Comentarios'
          onChangeText = {TextInputValue => this.setState({userComent: TextInputValue})}
          underlineColorAndroid = 'transparent'
