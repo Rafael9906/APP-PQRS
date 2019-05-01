@@ -6,13 +6,16 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  Picker,
+  View
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 import { StackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
+
+
 
 
 
@@ -60,6 +63,7 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
+      
       return (
         <View style={styles.container}>
         <Text>DATOS PERSONALES</Text>
@@ -93,14 +97,20 @@ export default class HomeScreen extends React.Component {
        />
 
         <Text>PQRS</Text>
-        <TextInput
-         placeholder = 'Tipo de PQRS'
-         onChangeText = {TextInputValue => this.setState({userPQRS: TextInputValue})}
-         underlineColorAndroid = 'transparent'
-         style = {styles.TextInputStyle3}
-       />
 
-       
+      <Picker
+        selectedValue={this.state.language}
+        style={{height: 100, width: 100}}
+        onValueChange={(TextInputValue) =>
+          this.setState({userPQRS: TextInputValue})
+        }>
+        <Picker.Item label="Tipo de PQRS" value="0" />
+        <Picker.Item label="Petición" value="1" />
+        <Picker.Item label="Queja" value="2" />
+        <Picker.Item label="Reclamo" value="3" />
+        <Picker.Item label="Sugerencia" value="4" />
+      </Picker>
+        
 
         <TextInput
          placeholder = 'Comentarios'
@@ -109,6 +119,7 @@ export default class HomeScreen extends React.Component {
          style = {styles.TextInputStyle3}
        />
 
+      
          <TouchableOpacity  onPress={this.InsertUsers}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
          <Text style={styles.TextStyle }>Registrar</Text>
          </TouchableOpacity>
