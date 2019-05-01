@@ -3,15 +3,15 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import ConsultScreen from '../screens/ConsultScreen';
+import LoginScreen from '../screens/LoginScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+const RegisterStack = createStackNavigator({
+  Register: RegisterScreen,
 });
 
-HomeStack.navigationOptions = {
+RegisterStack.navigationOptions = {
   tabBarLabel: 'Registrar',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -25,11 +25,11 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const ConsultStack = createStackNavigator({
+  Consult: ConsultScreen,
 });
 
-LinksStack.navigationOptions = {
+ConsultStack.navigationOptions = {
   tabBarLabel: 'Consultar',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -39,11 +39,11 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const LoginStack = createStackNavigator({
+  Login: LoginScreen,
 });
 
-SettingsStack.navigationOptions = {
+LoginStack.navigationOptions = {
   tabBarLabel: 'Cuenta',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
@@ -54,7 +54,7 @@ SettingsStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack,
+  RegisterStack,
+  ConsultStack,
+  LoginStack,
 });
