@@ -86,6 +86,12 @@ export default class SettingsScreen extends React.Component {
         <Text style={styles.TextStyle }>Iniciar sesión</Text>
        </TouchableOpacity>
 
+       <TextInput 
+      placeholder="Usuario"
+      style = {styles.TextInputStyle2}
+      onChangeText={userPassword => this.setState({userPassword})}
+      />
+
       </View>
 
     )

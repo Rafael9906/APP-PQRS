@@ -42,7 +42,9 @@ export default class LinksScreen extends React.Component {
     })
   }
 
-  Action_Click(){
+  Action_Click(id_usuario, fecha, comentarios){
+
+    alert(id_usuario);
 
   }
 
@@ -71,9 +73,9 @@ export default class LinksScreen extends React.Component {
     }
 
     return (
-      <View style={styles.ContainerDataUser}>
+      <View style={styles.container}>
         <TouchableOpacity  onPress={this.ShowUsers}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-         <Text style={styles.TextStyle }>Registrar</Text>
+         <Text style={styles.TextStyle }>Consultar</Text>
         </TouchableOpacity>
 
 
@@ -83,6 +85,9 @@ export default class LinksScreen extends React.Component {
           renderSeparator = {this.ListViewItemSeparator}
           renderRow = {(rowData) =>
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
+            rowData.id_usuario,
+            rowData.fecha,
+            rowData.comentarios
           )}>
           {rowData.id}
           </Text>
@@ -103,6 +108,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
+    marginLeft: 25,
     backgroundColor: '#fff',
   },
 
