@@ -7,7 +7,8 @@ import {
   Text,
   TouchableOpacity,
   Picker,
-  View
+  View,
+  Keyboard
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -16,14 +17,74 @@ export default class SettingsScreen extends React.Component {
     title: 'Iniciar sesión',
   };
 
+  constructor(props){
+		super(props)
+		this.state={
+			userId:'',
+			userPassword:''
+		}
+	}
+
+  Login = () =>{
+    const {userId,userPassword} = this.state;
+    
+    //Mandar datos al servidor
+    fetch('https://react-connection.000webhostapp.com/usuario/login.php',{
+      method: 'POST',
+      header:{
+        'Accept':'application/json',
+        'Content-type':'application/json'
+      },
+      body:JSON.stringify({
+        //Pasar los datos ingresados al servidor
+        id: userId,
+        password: userPassword
+
+      })
+
+    })
+    .then((response)=>response.json())
+     .then((responseJson)=>{
+       if(responseJson == "ok")
+       {
+         alert("bien");
+       }
+       else
+       {
+         alert("Datos incorrectos");
+       }
+     })
+     .catch((error)=>{
+       console.error(error);
+     });
+
+    Keyboard.dismiss();
+
+
+  }
+
   render() {
 
     return(
 
       <View style={styles.container}>  
 
-      <TextInput placeholder="Identificación" style = {styles.TextInputStyle2}/>
-      <TextInput placeholder="Contraseña" style = {styles.TextInputStyle2}/>
+      <TextInput  keyboardType='number-pad'
+      placeholder="Identificación" 
+      style = {styles.TextInputStyle2}
+      onChangeText={userId => this.setState({userId})}
+      />
+
+      <TextInput 
+      placeholder="Contraseña" 
+      style = {styles.TextInputStyle2}
+      secureTextEntry={true}
+      onChangeText={userPassword => this.setState({userPassword})}
+      />
+
+      <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+        <Text style={styles.TextStyle }>Iniciar sesión</Text>
+       </TouchableOpacity>
 
       </View>
 
