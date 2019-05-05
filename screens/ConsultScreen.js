@@ -85,9 +85,9 @@ export default class LinksScreen extends React.Component {
           renderSeparator = {this.ListViewItemSeparator}
           renderRow = {(rowData) =>
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
-            rowData.id_usuario,
+            rowData.numero_radicado
           )}>
-          {rowData.id}
+          {rowData.numero_radicado} -> {rowData.comentarios}
           </Text>
           }
 
