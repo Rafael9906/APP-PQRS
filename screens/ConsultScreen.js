@@ -86,8 +86,6 @@ export default class LinksScreen extends React.Component {
           renderRow = {(rowData) =>
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
             rowData.id_usuario,
-            rowData.fecha,
-            rowData.comentarios
           )}>
           {rowData.id}
           </Text>
