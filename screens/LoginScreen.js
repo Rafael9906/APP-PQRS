@@ -76,7 +76,7 @@ export default class SettingsScreen extends React.Component {
       />
 
       <TextInput 
-      placeholder="Contraseña" 
+      placeholder="Contraseña"  maxLength = {10}
       style = {styles.TextInputStyle2}
       secureTextEntry={true}
       onChangeText={userPassword => this.setState({userPassword})}
