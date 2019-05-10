@@ -8,12 +8,11 @@ import {
   TouchableOpacity,
   Picker,
   View,
-  Keyboard,
+  Keyboard
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-
-export default class LoginScreen extends React.Component {
+export default class SettingsScreen extends React.Component {
   static navigationOptions = {
     title: 'Iniciar sesión',
   };
@@ -24,12 +23,8 @@ export default class LoginScreen extends React.Component {
 			userId:'',
 			userPassword:''
 		}
-  }
+	}
 
-
-  
-
-  
   Login = () =>{
     const {userId,userPassword} = this.state;
     
@@ -44,7 +39,7 @@ export default class LoginScreen extends React.Component {
         //Pasar los datos ingresados al servidor
         id: userId,
         password: userPassword
-      
+
       })
 
     })
@@ -52,9 +47,7 @@ export default class LoginScreen extends React.Component {
      .then((responseJson)=>{
        if(responseJson == "ok")
        {
-         //alert("bien");
-        this.props.navigation.navigate("profile");
-
+         alert("bien");
        }
        else
        {
@@ -76,7 +69,7 @@ export default class LoginScreen extends React.Component {
 
       <View style={styles.container}>  
 
-      <TextInput  keyboardType='number-pad' maxLength = {11}
+      <TextInput  keyboardType='number-pad'
       placeholder="Identificación" 
       style = {styles.TextInputStyle2}
       onChangeText={userId => this.setState({userId})}
@@ -90,12 +83,6 @@ export default class LoginScreen extends React.Component {
       onChangeText={userPassword => this.setState({userPassword})}
       />
 
-      <TextInput  
-      placeholder="Usuario"  maxLength = {11}
-      style = {styles.TextInputStyle2}
-      set value = {this.state.userId}
-      />
-
       <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
         <Text style={styles.TextStyle }>Iniciar sesión</Text>
        </TouchableOpacity>
@@ -107,7 +94,6 @@ export default class LoginScreen extends React.Component {
       style = {styles.TextInputStyle2}
       onChangeText={userPassword => this.setState({userPassword})}
       />
-
 
       </View>
 

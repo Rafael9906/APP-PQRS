@@ -11,7 +11,7 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-export default class ConsultScreen extends React.Component {
+export default class LinksScreen extends React.Component {
   static navigationOptions = {
     title: 'Consultar',
   };
