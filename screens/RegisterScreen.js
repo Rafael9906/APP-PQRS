@@ -16,7 +16,11 @@ import { StackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
 
 
+<<<<<<< HEAD
 export default class RegisterScreen extends React.Component {
+=======
+export default class HomeScreen extends React.Component {
+>>>>>>> a288021fd799efc94bd0da83dc9da789fc83f35a
   static navigationOptions = {
     title: 'Registro de PQRS'
   };

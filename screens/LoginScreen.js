@@ -84,6 +84,7 @@ export default class LoginScreen extends React.Component {
 
       <TextInput 
       placeholder="Contraseña"  maxLength = {6}
+      placeholder="Contraseña"  maxLength = {10}
       style = {styles.TextInputStyle2}
       secureTextEntry={true}
       onChangeText={userPassword => this.setState({userPassword})}
@@ -99,7 +100,14 @@ export default class LoginScreen extends React.Component {
         <Text style={styles.TextStyle }>Iniciar sesión</Text>
        </TouchableOpacity>
 
+
     
+       <TextInput 
+      placeholder="Usuario"
+      style = {styles.TextInputStyle2}
+      onChangeText={userPassword => this.setState({userPassword})}
+      />
+
 
       </View>
 
