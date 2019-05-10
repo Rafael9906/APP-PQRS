@@ -122,8 +122,8 @@ focusTheField = (id) => {
         <Picker.Item label="Tipo de PQRS" value="0" />
         <Picker.Item label="Petición" value="1" />
         <Picker.Item label="Queja" value="2" />
-        <Picker.Item label="Reclamo" value="3" />
-        <Picker.Item label="Sugerencia" value="4" />
+        <Picker.Item label="Reclamo" value="4" />
+        <Picker.Item label="Sugerencia" value="5" />
       </Picker>
         
 

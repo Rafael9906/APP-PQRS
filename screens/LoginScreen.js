@@ -69,7 +69,7 @@ export default class SettingsScreen extends React.Component {
 
       <View style={styles.container}>  
 
-      <TextInput  keyboardType='number-pad'
+      <TextInput  keyboardType='number-pad'maxLength = {11}
       placeholder="Identificación" 
       style = {styles.TextInputStyle2}
       onChangeText={userId => this.setState({userId})}
@@ -77,7 +77,6 @@ export default class SettingsScreen extends React.Component {
 
       <TextInput 
       placeholder="Contraseña"  maxLength = {6}
-      placeholder="Contraseña"  maxLength = {10}
       style = {styles.TextInputStyle2}
       secureTextEntry={true}
       onChangeText={userPassword => this.setState({userPassword})}
@@ -90,9 +89,9 @@ export default class SettingsScreen extends React.Component {
 
     
        <TextInput 
-      placeholder="Usuario"
+      placeholder="Usuario" maxLength = {11}
       style = {styles.TextInputStyle2}
-      onChangeText={userPassword => this.setState({userPassword})}
+      value = {this.state.userId}
       />
 
       </View>
