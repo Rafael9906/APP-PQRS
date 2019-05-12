@@ -13,6 +13,9 @@ import {
   ActivityIndicator
 } from 'react-native';
 
+import styles from './ConsultStyle'
+
+
 export default class ConsultScreen extends React.Component {
   static navigationOptions = {
     title: 'Consultar',
@@ -123,41 +126,3 @@ export default class ConsultScreen extends React.Component {
   }
 }
 
-//Estilos
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    marginLeft: 25,
-    backgroundColor: '#fff',
-  },
-
-  TouchableOpacityStyle: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderRadius: 5,
-    marginBottom: 7,
-    width: '90%',
-    backgroundColor: '#00BCD4'
-  },
-
-  ContainerDataUser: {
-    flex:1,
-    paddingTop:20,
-    marginLeft:5,
-    marginRight:5
-  },
-
-  rowViewContainer: {
-    textAlign: 'center',
-    fontSize:20,
-    paddingTop:10,
-    paddingRight:10,
-    paddingBottom:10
-  },
-
-  TextStyle: {
-    color:'#fff',
-    textAlign: 'center'
-  }
-});
