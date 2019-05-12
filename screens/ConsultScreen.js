@@ -8,24 +8,32 @@ import {
   TouchableOpacity,
   View,
   ListView,
+  Button,
+  StackNavigator,
   ActivityIndicator
 } from 'react-native';
 
-export default class LinksScreen extends React.Component {
+export default class ConsultScreen extends React.Component {
   static navigationOptions = {
     title: 'Consultar',
-  };
+  };	
 
   ShowUsers = () => {
-    this.props.navigation.navigate('')
+    //this.props.navigation.navigate('')
+    alert(responseJson);
 
   }
 
   constructor(props){
     super(props)
     this.state = {
-      isLoding: true
+      isLoding: true,
+      content: true
     }
+  }
+
+  componentHideAndShow = () => {
+    this.setState(previousState => ({ content: !previousState.content }))
   }
 
   componentDidMount(){
@@ -62,6 +70,7 @@ export default class LinksScreen extends React.Component {
 
   render() {
 
+
     if(this.state.isLoding)
     {
       return(
@@ -73,13 +82,15 @@ export default class LinksScreen extends React.Component {
     }
 
     return (
+      
       <View style={styles.container}>
-        <TouchableOpacity  onPress={this.ShowUsers}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-         <Text style={styles.TextStyle }>Consultar</Text>
-        </TouchableOpacity>
 
-
-        <ListView
+     {
+        // Display the content in screen when state object "content" is true.
+        // Hide the content in screen when state object "content" is false. 
+        this.state.content ?  
+        
+        <ListView 
 
           dataSource = {this.state.dataSource}
           renderSeparator = {this.ListViewItemSeparator}
@@ -92,6 +103,17 @@ export default class LinksScreen extends React.Component {
           }
 
         />
+        
+        :null
+      }
+
+
+ 
+        <TouchableOpacity  onPress={this.componentHideAndShow}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+         <Text style={styles.TextStyle }>Consultar</Text>
+        </TouchableOpacity>
+
+          
 
       </View>
 

@@ -8,22 +8,36 @@ import {
   TouchableOpacity,
   Picker,
   View,
+  Button,
   Keyboard
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-export default class SettingsScreen extends React.Component {
+
+
+
+export default class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: 'Iniciar sesión',
+    title: 'Cuenta',
   };
 
   constructor(props){
 		super(props)
 		this.state={
 			userId:'',
-			userPassword:''
+      userPassword:'',
+      content: false,
+      content1: true
 		}
-	}
+  }
+
+  
+  
+  componentHideAndShow = () => {
+    this.setState(previousState => ({ content: !previousState.content }))
+  }
+ 
 
   Login = () =>{
     const {userId,userPassword} = this.state;
@@ -47,11 +61,15 @@ export default class SettingsScreen extends React.Component {
      .then((responseJson)=>{
        if(responseJson == "ok")
        {
-         alert("bien");
+         this.setState(previousState => ({ content: !previousState.content }))
+         this.setState(previousState => ({ content1: !previousState.content1 }))
+
        }
        else
        {
          alert("Datos incorrectos");
+         
+
        }
      })
      .catch((error)=>{
@@ -65,35 +83,69 @@ export default class SettingsScreen extends React.Component {
 
   render() {
 
+
+
     return(
 
       <View style={styles.container}>  
 
-      <TextInput  keyboardType='number-pad'maxLength = {11}
-      placeholder="Identificación" 
-      style = {styles.TextInputStyle2}
-      onChangeText={userId => this.setState({userId})}
-      />
+            
 
-      <TextInput 
-      placeholder="Contraseña"  maxLength = {6}
-      style = {styles.TextInputStyle2}
-      secureTextEntry={true}
-      onChangeText={userPassword => this.setState({userPassword})}
-      />
+      {
+        this.state.content ?
 
-      <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+        <Text style={styles.TextStyle }>Consultar</Text>
+        </TouchableOpacity>
+        
+        :null
+      }
+
+      {
+          this.state.content ?
+
+        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+        <Text style={styles.TextStyle }>Cerrar sesión</Text>
+        </TouchableOpacity>
+
+        :null
+      }
+
+      {
+        this.state.content1 ?
+
+        <TextInput  keyboardType='number-pad'maxLength = {11}
+        placeholder="Identificación" 
+        style = {styles.TextInputStyle2}
+        onChangeText={userId => this.setState({userId})}
+        />
+
+        :null
+
+      }
+
+      {
+        this.state.content1 ?
+          <TextInput 
+          placeholder="Contraseña"  maxLength = {6}
+          style = {styles.TextInputStyle2}
+          secureTextEntry={true}
+          onChangeText={userPassword => this.setState({userPassword})}
+          />
+
+        :null
+      }
+
+      {
+        this.state.content1 ?
+
+        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
         <Text style={styles.TextStyle }>Iniciar sesión</Text>
        </TouchableOpacity>
 
-
-    
-       <TextInput 
-      placeholder="Usuario" maxLength = {11}
-      style = {styles.TextInputStyle2}
-      value = {this.state.userId}
-      />
-
+        :null
+      }
+  
       </View>
 
     )
@@ -101,6 +153,12 @@ export default class SettingsScreen extends React.Component {
   
   }
 }
+
+
+
+
+
+
 
 
 //Estilos

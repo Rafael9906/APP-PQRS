@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import RegisterScreen from '../screens/RegisterScreen';
-import ConsultScreen from '../screens/ConsultScreen';
+// import ConsultScreen from '../screens/ConsultScreen';
 import LoginScreen from '../screens/LoginScreen';
 
 const RegisterStack = createStackNavigator({
@@ -25,19 +25,19 @@ RegisterStack.navigationOptions = {
   ),
 };
 
-const ConsultStack = createStackNavigator({
-  Consult: ConsultScreen,
-});
+// const ConsultStack = createStackNavigator({
+//   Consult: ConsultScreen,
+// });
 
-ConsultStack.navigationOptions = {
-  tabBarLabel: 'Consultar',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
-};
+// ConsultStack.navigationOptions = {
+//   tabBarLabel: 'Consultar',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+//     />
+//   ),
+// };
 
 const LoginStack = createStackNavigator({
   Login: LoginScreen,
@@ -55,6 +55,6 @@ LoginStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   RegisterStack,
-  ConsultStack,
+  // ConsultStack,
   LoginStack,
 });

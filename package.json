@@ -18,7 +18,7 @@
     "react-native-material-dropdown": "^0.11.1",
     "react-native-paper": "^2.15.2",
     "react-native-table-component": "^1.2.0",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.9.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",

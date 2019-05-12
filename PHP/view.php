@@ -1,6 +1,12 @@
 <?php
 
- include 'connection.php';
+ session_start();
+ //error_reporting(0);
+
+
+    include 'connection.php';
+
+  
 
  $result = mysqli_query($link, "SELECT * FROM radicado");
 

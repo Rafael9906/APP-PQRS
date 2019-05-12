@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   Picker,
+  Navigator,
   View
 } from 'react-native';
 import { WebBrowser } from 'expo';
@@ -14,7 +15,7 @@ import { WebBrowser } from 'expo';
 import { MonoText } from '../components/StyledText';
 import { StackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
-
+import LoginScreen from '../screens/LoginScreen';
 
 
 export default class RegisterScreen extends React.Component {
@@ -70,6 +71,7 @@ focusTheField = (id) => {
     render() {
       
       return (
+
         <View style={styles.container}>
         <Text>DATOS PERSONALES</Text>
 
@@ -79,7 +81,6 @@ focusTheField = (id) => {
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
          onSubmitEditing={() => { this.focusTheField('field2'); }}
-
        />
 
        <TextInput  ref={input => { this.inputs['field2'] = input }}
@@ -121,8 +122,8 @@ focusTheField = (id) => {
         }>
         <Picker.Item label="Tipo de PQRS" value="0" />
         <Picker.Item label="Petición" value="1" />
-        <Picker.Item label="Queja" value="2" />
-        <Picker.Item label="Reclamo" value="4" />
+        <Picker.Item label="Reclamo" value="2" />
+        <Picker.Item label="Queja" value="4" />
         <Picker.Item label="Sugerencia" value="5" />
       </Picker>
         
@@ -140,63 +141,73 @@ focusTheField = (id) => {
          </TouchableOpacity>
 
          </View>
-      )}; 
+      )};       
 
     }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    flex: 1,
-    marginTop: 5,
-    backgroundColor: '#fff',
-  },
-  TextInputStyle:
-  {
-    textAlign: 'center',
-    marginBottom: 7,
-    width:'90%',
-    height: 40,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#000'
-  },
-  TextInputStyle2:
-  {
-    textAlign: 'center',
-    marginBottom: 7,
-    marginTop: 20,
-    width:'90%',
-    height: 40,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#000'
-  },
-  TextInputStyle3:
-  {
-    textAlign: 'center',
-    marginBottom: 7,
-    marginTop: 20,
-    width:'90%',
-    height: 40,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#FF0000'
-  },
 
-  TextStyle: {
-    color:'#fff',
-    textAlign: 'center'
-  },
 
-  TouchableOpacityStyle: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderRadius: 5,
-    marginBottom: 7,
-    width: '90%',
-    backgroundColor: '#00BCD4'
 
-  }
+
+
+
+    //Estilos
+
+    const styles = StyleSheet.create({
+      container: {
+        alignItems: "center",
+        flex: 1,
+        marginTop: 5,
+        backgroundColor: '#fff',
+      },
+      TextInputStyle:
+      {
+        textAlign: 'center',
+        marginBottom: 7,
+        width:'90%',
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#000'
+      },
+      TextInputStyle2:
+      {
+        textAlign: 'center',
+        marginBottom: 7,
+        marginTop: 20,
+        width:'90%',
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#000'
+      },
+      TextInputStyle3:
+      {
+        textAlign: 'center',
+        marginBottom: 7,
+        marginTop: 20,
+        width:'90%',
+        height: 40,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#FF0000'
+      },
+    
+      TextStyle: {
+        color:'#fff',
+        textAlign: 'center'
+      },
+    
+      TouchableOpacityStyle: {
+        paddingTop: 10,
+        paddingBottom: 10,
+        borderRadius: 5,
+        marginBottom: 7,
+        width: '90%',
+        backgroundColor: '#00BCD4'
+    
+      }
+      
+    });
   
-});
+    
