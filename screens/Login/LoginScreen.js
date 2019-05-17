@@ -87,9 +87,13 @@ class LoginScreen extends React.Component {
 
   goSecond = () => {
     this.props.navigation.navigate('consult');
-    
-
   }
+
+  inputs = {};
+// function to focus the field
+focusTheField = (id) => {
+  this.inputs[id].focus();
+}
 
   render() {
 
@@ -98,12 +102,26 @@ class LoginScreen extends React.Component {
 
       <View style={styles.container}>  
 
+      {
+        this.state.content1 ?
+
+        <Text style={styles.textStyle}>INICIAR SESIÓN</Text>
+        :null
+      }
 
       {
         this.state.content ?
 
-        <TouchableOpacity  onPress={this.goSecond}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-        <Text style={styles.TextStyle }>Consultar</Text>
+        <Text style={styles.textStyle}>CUENTA</Text>
+        :null
+      }
+
+
+      {
+        this.state.content ?
+
+        <TouchableOpacity  onPress={this.goSecond}activeOpacity = {.4} style = {styles.TouchableOpacityStyle1} >
+        <Text style={styles.textOpacityStyle}>Consultar</Text>
         </TouchableOpacity>
         
         :null
@@ -112,8 +130,8 @@ class LoginScreen extends React.Component {
       {
           this.state.content ?
 
-        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-        <Text style={styles.TextStyle }>Cerrar sesión</Text>
+        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle1} >
+        <Text style={styles.textOpacityStyle }>Cerrar sesión</Text>
         </TouchableOpacity>
 
         :null
@@ -122,10 +140,11 @@ class LoginScreen extends React.Component {
       {
         this.state.content1 ?
 
-        <TextInput  keyboardType='number-pad'maxLength = {11}
+        <TextInput  keyboardType='number-pad'maxLength = {11} label={"Field 1"} returnKeyType = 'next'
         placeholder="Identificación" 
-        style = {styles.TextInputStyle2}
+        style = {styles.TextInputStyle}
         onChangeText={userId => this.setState({userId})}
+        onSubmitEditing={() => { this.focusTheField('field2'); }}
         />
 
         :null
@@ -134,7 +153,7 @@ class LoginScreen extends React.Component {
 
       {
         this.state.content1 ?
-          <TextInput 
+          <TextInput ref={input => { this.inputs['field2'] = input }}
           placeholder="Contraseña"  maxLength = {6}
           style = {styles.TextInputStyle2}
           secureTextEntry={true}
@@ -148,7 +167,7 @@ class LoginScreen extends React.Component {
         this.state.content1 ?
 
         <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-        <Text style={styles.TextStyle }>Iniciar sesión</Text>
+        <Text style={styles.textOpacityStyle }>Iniciar sesión</Text>
        </TouchableOpacity>
 
         :null

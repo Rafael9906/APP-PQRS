@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
       paddingTop: 15,
       marginLeft: 25,
       backgroundColor: 'rgb(32, 53, 70)',
+      height: '100%',
+      width: '100%'      
     },
   
     TouchableOpacityStyle: {
@@ -30,9 +32,11 @@ const styles = StyleSheet.create({
     rowViewContainer: {
       textAlign: 'center',
       fontSize:20,
+      fontWeight: 'bold',
       paddingTop:10,
       paddingRight:10,
-      paddingBottom:10
+      paddingBottom:10,
+      color: '#fff'
     },
   
     TextStyle: {

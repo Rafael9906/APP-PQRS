@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import RegisterScreen from '../screens/Register/RegisterScreen';
 // import ConsultScreen from '../screens/Consult/ConsultScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
+import Colors from '../constants/Colors';
 
 const RegisterStack = createStackNavigator({
   Register: RegisterScreen,
@@ -24,9 +25,12 @@ RegisterStack.navigationOptions = {
     />
   ),
   tabBarOptions:{
+    // activeTintColor: '#f7c744', // active icon color
+    //   nactiveTintColor: '#rgb(32, 53, 70)',  // inactive icon color
     //other properties
     style: {
       backgroundColor: 'rgb(32, 53, 70)',//color you want to change
+      
     }
 },
 };

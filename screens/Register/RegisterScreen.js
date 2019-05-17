@@ -8,14 +8,16 @@ import {
   TouchableOpacity,
   Picker,
   Navigator,
-  View
+  View,
+  KeyboardAvoidingView
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-import { MonoText } from '../../components/StyledText';
-import { StackNavigator } from 'react-navigation';
 import { TextInput } from 'react-native-gesture-handler';
-import styles from './RegisterStyle'
+import styles from './RegisterStyle';
+import Textarea from 'react-native-textarea';
+
+
 //import LoginScreen from '../screens/LoginScreen';
 
 
@@ -76,14 +78,15 @@ focusTheField = (id) => {
       
       return (
 
-        <View style={styles.container}>
-        <Text>DATOS PERSONALES</Text>
+<KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+<ScrollView style={styles.contentContainer}> 
+        <Text style={styles.textStyle}>DATOS PERSONALES</Text>
 
         <TextInput keyboardType='number-pad' maxLength = {10} label={"Field 1"} returnKeyType = 'next'
          placeholder = 'Identificación'
          onChangeText = {TextInputValue => this.setState({userID: TextInputValue})}
          underlineColorAndroid = 'transparent'
-         style = {styles.TextInputStyle2}
+         style = {styles.TextInputStyle}
          onSubmitEditing={() => { this.focusTheField('field2'); }}
        />
 
@@ -107,47 +110,60 @@ focusTheField = (id) => {
        />
 
        <TextInput ref={input => { this.inputs['field4'] = input }}
-         keyboardType='number-pad' maxLength = {10} returnKeyType = 'next'
+         keyboardType='number-pad' maxLength = {10}
          placeholder = 'Teléfono'
          onChangeText = {TextInputValue => this.setState({userPhone: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle2}
-         onSubmitEditing={() => { this.focusTheField('field5'); }}
 
        />
 
-        <Text>PQRS</Text>
+        <Text style={styles.textStyle}>PQRS</Text>
 
       <Picker 
         selectedValue={this.state.userPQRS}
-        style={{height: 30, width: 200}}
+        style={styles.pickerStyle}
         onValueChange={(TextInputValue) =>
         this.setState({userPQRS: TextInputValue})
         }>
-        <Picker.Item label="Tipo de PQRS" value="0" />
+        <Picker.Item label="Seleccione el tipo de PQRS..." value="0" />
         <Picker.Item label="Petición" value="1" />
         <Picker.Item label="Reclamo" value="2" />
         <Picker.Item label="Queja" value="4" />
         <Picker.Item label="Sugerencia" value="5" />
       </Picker>
+
+      <Textarea
+    containerStyle={styles.textareaContainer}
+    style={styles.textarea}
+    maxLength={100}
+    placeholder={'Comentarios'}
+    onChangeText = {TextInputValue => this.setState({userComent: TextInputValue})}
+    placeholderTextColor={'#fff'}
+    underlineColorAndroid={'transparent'}
+  />
         
 
-        <TextInput ref={input => { this.inputs['field5'] = input }}
+
+
+        {/* <TextInput ref={input => { this.inputs['field5'] = input }}
          placeholder = 'Comentarios'
          onChangeText = {TextInputValue => this.setState({userComent: TextInputValue})}
          underlineColorAndroid = 'transparent'
          style = {styles.TextInputStyle3}
-       />
+       /> */}
 
       
          <TouchableOpacity  onPress={this.InsertUsers}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-         <Text style={styles.TextStyle }>Registrar</Text>
+         <Text style={styles.textStyle1 }>Registrar</Text>
          </TouchableOpacity>
+         </ScrollView>
 
-         </View>
+  </KeyboardAvoidingView>
       )};       
 
     }
+    
 
 
 

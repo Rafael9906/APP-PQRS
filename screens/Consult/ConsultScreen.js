@@ -65,7 +65,7 @@ export default class ConsultScreen extends React.Component {
       style = {{
        height: .5,
        width: '100%',
-       backgroundColor: '#2196F3'
+       backgroundColor: '#f7c744'
       }} 
       /> 
     )
@@ -94,7 +94,7 @@ export default class ConsultScreen extends React.Component {
         this.state.content ?  
         
         <ListView 
-
+      
           dataSource = {this.state.dataSource}
           renderSeparator = {this.ListViewItemSeparator}
           renderRow = {(rowData) =>
