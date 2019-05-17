@@ -22,8 +22,9 @@
 		}
 		else{
 		
-		$_SESSION['user'] = $id;
-		echo json_encode("Identificación: ". $_SESSION['user']);
+		$_SESSION['id'] = $id;
+		//echo json_encode("Identificación: ". $_SESSION['user']);
+		echo json_encode("ok");
 
 		}
 	}

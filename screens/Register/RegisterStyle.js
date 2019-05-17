@@ -10,29 +10,35 @@ import {
         container: {
           alignItems: "center",
           flex: 1,
-          marginTop: 5,
-          backgroundColor: '#fff',
+          //marginTop: 20,
+          backgroundColor: 'rgb(32, 53, 70)',
         },
         TextInputStyle:
         {
           textAlign: 'center',
+          marginTop: 25,
           marginBottom: 7,
           width:'90%',
           height: 40,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#000'
+          borderColor: '#000',
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          color: '#fff'
         },
         TextInputStyle2:
         {
           textAlign: 'center',
           marginBottom: 7,
-          marginTop: 20,
+          marginTop: 30,
           width:'90%',
           height: 40,
           borderWidth: 1,
           borderRadius: 5,
-          borderColor: '#000'
+          borderColor: '#000',
+          backgroundColor: 'rgba(255,255,255,0.2)',
+          color: '#fff'
+
         },
         TextInputStyle3:
         {

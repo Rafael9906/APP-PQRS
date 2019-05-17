@@ -9,19 +9,21 @@ import {
   Picker,
   View,
   Button,
+  TouchableHighlight,
   Keyboard
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './LoginStyle'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import ConsultScreen from '../Consult/ConsultScreen';
 
 
 
 
 
-export default class LoginScreen extends React.Component {
+class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: 'Cuenta',
+    title: 'Cuenta', header:null
   };
 
   constructor(props){
@@ -83,20 +85,24 @@ export default class LoginScreen extends React.Component {
 
   }
 
-  render() {
+  goSecond = () => {
+    this.props.navigation.navigate('consult');
+    
 
+  }
+
+  render() {
 
 
     return(
 
       <View style={styles.container}>  
 
-            
 
       {
         this.state.content ?
 
-        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
+        <TouchableOpacity  onPress={this.goSecond}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
         <Text style={styles.TextStyle }>Consultar</Text>
         </TouchableOpacity>
         
@@ -155,3 +161,14 @@ export default class LoginScreen extends React.Component {
   
   }
 }
+
+export default Consult = createStackNavigator({
+  first:{screen: LoginScreen},
+  consult:{ screen: ConsultScreen}
+},
+
+{
+  navigationOptions: {
+      header: null,
+  },
+});

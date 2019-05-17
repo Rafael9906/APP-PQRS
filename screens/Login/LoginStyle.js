@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
     container: {
       alignItems: "center",
       flex: 1,
-      marginTop: 5,
-      backgroundColor: '#fff',
+      //marginTop: 5,
+      backgroundColor: 'rgb(32, 53, 70)',
     },
     TextInputStyle:
     {
@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
       height: 40,
       borderWidth: 1,
       borderRadius: 5,
-      borderColor: '#000'
+      borderColor: '#000',
+      backgroundColor: 'rgba(255,255,255,0.2)',
+      color: '#fff'
+
     },
     TextInputStyle3:
     {

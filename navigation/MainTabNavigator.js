@@ -23,6 +23,12 @@ RegisterStack.navigationOptions = {
       }
     />
   ),
+  tabBarOptions:{
+    //other properties
+    style: {
+      backgroundColor: 'rgb(32, 53, 70)',//color you want to change
+    }
+},
 };
 
 // const ConsultStack = createStackNavigator({
@@ -51,6 +57,11 @@ LoginStack.navigationOptions = {
       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
     />
   ),
+  tabBarOptions:{
+  style: {
+    backgroundColor: 'rgb(32, 53, 70)',//color you want to change
+  }
+},
 };
 
 export default createBottomTabNavigator({

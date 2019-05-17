@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
       flex: 1,
       paddingTop: 15,
       marginLeft: 25,
-      backgroundColor: '#fff',
+      backgroundColor: 'rgb(32, 53, 70)',
     },
   
     TouchableOpacityStyle: {

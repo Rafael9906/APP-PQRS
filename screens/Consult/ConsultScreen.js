@@ -18,7 +18,7 @@ import styles from './ConsultStyle'
 
 export default class ConsultScreen extends React.Component {
   static navigationOptions = {
-    title: 'Consultar',
+    title: 'Consultar', header:null 
   };	
 
   ShowUsers = () => {
@@ -101,22 +101,14 @@ export default class ConsultScreen extends React.Component {
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
             rowData.numero_radicado
           )}>
-          {rowData.numero_radicado} -> {rowData.comentarios}
+          {rowData.numero_radicado}
           </Text>
           }
 
         />
         
         :null
-      }
-
-
- 
-        <TouchableOpacity  onPress={this.componentHideAndShow}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >
-         <Text style={styles.TextStyle }>Consultar</Text>
-        </TouchableOpacity>
-
-          
+      }         
 
       </View>
 

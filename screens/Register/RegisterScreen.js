@@ -21,7 +21,10 @@ import styles from './RegisterStyle'
 
 export default class RegisterScreen extends React.Component {
   static navigationOptions = {
-    title: 'Registro de PQRS'
+    title: 'Registro de PQRS', header:null,
+    headerStyle: {
+      backgroundColor: 'rgb(32, 53, 70)'
+    }
   };
 
     constructor(props){

@@ -11,10 +11,8 @@
   $nombre = $obj["nombre"];
   $correo = $obj["correo"];
   $telefono = $obj["telefono"];
-
   $pqrs = $obj["pqrs"];
   $comentario = $obj["comentario"];
-
   $random = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 6);
   $randomID = substr(str_shuffle("0123456789"), 0, 5);
   $md5Password = md5($random);
