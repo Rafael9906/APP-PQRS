@@ -9,7 +9,9 @@ import {
   Picker,
   Navigator,
   View,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -67,7 +69,7 @@ focusTheField = (id) => {
         })
       }).then((response)=>response.json())
         .then((responseJson) => {
-          alert(responseJson);
+          Alert.alert(responseJson);
         }).catch((error) =>{
           console.error(error);
         })
@@ -82,7 +84,7 @@ focusTheField = (id) => {
 <ScrollView style={styles.contentContainer}> 
         <Text style={styles.textStyle}>DATOS PERSONALES</Text>
 
-        <TextInput keyboardType='number-pad' maxLength = {10} label={"Field 1"} returnKeyType = 'next'
+        <TextInput keyboardType='number-pad' maxLength = {11} label={"Field 1"} returnKeyType = 'next'
          placeholder = 'Identificación'
          onChangeText = {TextInputValue => this.setState({userID: TextInputValue})}
          underlineColorAndroid = 'transparent'

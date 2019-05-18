@@ -10,7 +10,9 @@ import {
   View,
   Button,
   TouchableHighlight,
-  Keyboard
+  Keyboard,
+  Alert,
+  AsyncStorage
 } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './LoginStyle'
@@ -44,6 +46,8 @@ class LoginScreen extends React.Component {
  
 
   Login = () =>{
+
+    const arrayData = [];
     const {userId,userPassword} = this.state;
     
     //Mandar datos al servidor
@@ -65,13 +69,37 @@ class LoginScreen extends React.Component {
      .then((responseJson)=>{
        if(responseJson == "ok")
        {
+         const data = {
+           id:this.state.userId,
+           //password:this.state.userPassword
+         }
+         arrayData.push(data);
+
+         try{
+          AsyncStorage.getItem('database').then((value)=> {
+            if(value!==null){
+              const d = JSON.parse(value);
+              d.push(data)
+              AsyncStorage.setItem('database', JSON.stringify(d))
+
+            }else{
+              AsyncStorage.setItem('database',JSON.stringify(arrayData))
+              // .then(() => {
+                
+              // })
+            }
+          })
+         }
+         catch(error){
+
+         }
+
          this.setState(previousState => ({ content: !previousState.content }))
          this.setState(previousState => ({ content1: !previousState.content1 }))
-
        }
        else
        {
-         alert("Datos incorrectos");
+         Alert.alert("Datos incorrectos");
          
 
        }
@@ -85,6 +113,13 @@ class LoginScreen extends React.Component {
 
   }
 
+  close= () =>{
+    AsyncStorage.removeItem('database');
+    this.setState(previousState => ({ content: !previousState.content }))
+    this.setState(previousState => ({ content1: !previousState.content1 }))
+  }
+ 
+  
   goSecond = () => {
     this.props.navigation.navigate('consult');
   }
@@ -102,9 +137,11 @@ focusTheField = (id) => {
 
       <View style={styles.container}>  
 
+      
+
       {
         this.state.content1 ?
-
+     
         <Text style={styles.textStyle}>INICIAR SESIÓN</Text>
         :null
       }
@@ -130,7 +167,7 @@ focusTheField = (id) => {
       {
           this.state.content ?
 
-        <TouchableOpacity  onPress={this.Login}activeOpacity = {.4} style = {styles.TouchableOpacityStyle1} >
+        <TouchableOpacity  onPress={this.close}activeOpacity = {.4} style = {styles.TouchableOpacityStyle1} >
         <Text style={styles.textOpacityStyle }>Cerrar sesión</Text>
         </TouchableOpacity>
 

@@ -10,7 +10,9 @@ import {
   ListView,
   Button,
   StackNavigator,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert,
+  AsyncStorage
 } from 'react-native';
 
 import styles from './ConsultStyle'
@@ -23,7 +25,7 @@ export default class ConsultScreen extends React.Component {
 
   ShowUsers = () => {
     //this.props.navigation.navigate('')
-    alert(responseJson);
+    Alert.alert(responseJson);
 
   }
 
@@ -31,7 +33,20 @@ export default class ConsultScreen extends React.Component {
     super(props)
     this.state = {
       isLoding: true,
-      content: true
+      content: true,
+      list: ''
+    }
+
+    try{
+      AsyncStorage.getItem('database').then((value) =>{
+        this.setState({
+          list:value
+        })
+      })
+
+    }
+    catch(error){
+      console.log(error)
     }
   }
 
@@ -55,7 +70,7 @@ export default class ConsultScreen extends React.Component {
 
   Action_Click(id_usuario, fecha, comentarios){
 
-    alert(id_usuario);
+    Alert.alert(id_usuario);
 
   }
 
@@ -72,6 +87,8 @@ export default class ConsultScreen extends React.Component {
   }
 
   render() {
+
+    const data = JSON.stringify(this.state.list)
 
 
     if(this.state.isLoding)
@@ -108,7 +125,9 @@ export default class ConsultScreen extends React.Component {
         />
         
         :null
-      }         
+      }        
+
+      <Text>{data}</Text> 
 
       </View>
 
