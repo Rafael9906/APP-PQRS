@@ -1,33 +1,21 @@
 import React from 'react';
 import {
-  Image,
-  Platform,
-  ScrollView,
-  StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   ListView,
-  Button,
-  StackNavigator,
   ActivityIndicator,
-  Alert,
-  AsyncStorage
+  AsyncStorage,
+  Alert
 } from 'react-native';
 
 import styles from './ConsultStyle'
+
 
 
 export default class ConsultScreen extends React.Component {
   static navigationOptions = {
     title: 'Consultar', header:null 
   };	
-
-  ShowUsers = () => {
-    //this.props.navigation.navigate('')
-    Alert.alert(responseJson);
-
-  }
 
   constructor(props){
     super(props)
@@ -38,7 +26,7 @@ export default class ConsultScreen extends React.Component {
     }
 
     try{
-      AsyncStorage.getItem('database').then((value) =>{
+      AsyncStorage.getItem('user').then((value) =>{
         this.setState({
           list:value
         })
@@ -55,7 +43,7 @@ export default class ConsultScreen extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('https://react-connection.000webhostapp.com/usuario/view.php')
+    return fetch('http://144.217.85.47/pqrs/user/view.php')
     .then((response) => response.json())
     .then((responseJson) => {
       let ds = new ListView.DataSource({rowHasChanged: (r1, r2)=>r1 !== r2})
@@ -68,10 +56,12 @@ export default class ConsultScreen extends React.Component {
     })
   }
 
-  Action_Click(id_usuario, fecha, comentarios){
+  Action_Click(id_usuario,comentarios, id_estado_radicado){
 
-    Alert.alert(id_usuario);
 
+
+    alert('Usuario: '+id_usuario+'\n'+'Comentarios: '+comentarios+'\n'+'Estado: '+id_estado_radicado);
+ 
   }
 
   ListViewItemSeparator = () => {
@@ -86,6 +76,7 @@ export default class ConsultScreen extends React.Component {
     )
   }
 
+  
   render() {
 
     const data = JSON.stringify(this.state.list)
@@ -100,6 +91,8 @@ export default class ConsultScreen extends React.Component {
         </View>
       ) 
     }
+
+   
 
     return (
       
@@ -116,9 +109,9 @@ export default class ConsultScreen extends React.Component {
           renderSeparator = {this.ListViewItemSeparator}
           renderRow = {(rowData) =>
           <Text style = {styles.rowViewContainer} onPress = {this.Action_Click.bind(this,
-            rowData.numero_radicado
+            rowData.id_usuario, rowData.comentarios, rowData.id_estado_radicado
           )}>
-          {rowData.numero_radicado}
+          {rowData.numero_radicado} 
           </Text>
           }
 
@@ -130,6 +123,8 @@ export default class ConsultScreen extends React.Component {
       <Text>{data}</Text> 
 
       </View>
+
+
 
      
 

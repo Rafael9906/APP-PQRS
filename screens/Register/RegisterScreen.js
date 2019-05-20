@@ -43,9 +43,7 @@ export default class RegisterScreen extends React.Component {
       }
     }
 
-    // variable to hold the references of the textfields
 inputs = {};
-// function to focus the field
 focusTheField = (id) => {
   this.inputs[id].focus();
 }
@@ -53,7 +51,7 @@ focusTheField = (id) => {
     InsertUsers = () => {
       const {userID,userName,userEmail,userPhone,userPQRS,userComent} = this.state;
 
-      fetch('https://react-connection.000webhostapp.com/usuario/insert.php',{
+      fetch('http://144.217.85.47/pqrs/user/insert.php',{
         method: 'POST',
         headers:{
           'Accept': 'application/json',
@@ -69,7 +67,7 @@ focusTheField = (id) => {
         })
       }).then((response)=>response.json())
         .then((responseJson) => {
-          Alert.alert(responseJson);
+          alert(responseJson);
         }).catch((error) =>{
           console.error(error);
         })
@@ -145,15 +143,6 @@ focusTheField = (id) => {
     underlineColorAndroid={'transparent'}
   />
         
-
-
-
-        {/* <TextInput ref={input => { this.inputs['field5'] = input }}
-         placeholder = 'Comentarios'
-         onChangeText = {TextInputValue => this.setState({userComent: TextInputValue})}
-         underlineColorAndroid = 'transparent'
-         style = {styles.TextInputStyle3}
-       /> */}
 
       
          <TouchableOpacity  onPress={this.InsertUsers}activeOpacity = {.4} style = {styles.TouchableOpacityStyle} >

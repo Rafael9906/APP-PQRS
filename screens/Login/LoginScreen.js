@@ -38,6 +38,26 @@ class LoginScreen extends React.Component {
 		}
   }
 
+
+
+//   async checkUserSignedIn(){
+//     let context = this;
+//     try {
+//        let value = await AsyncStorage.getItem('user');
+//        if (value != null){
+//           // do something 
+//           this.setState(previousState => ({ content: !previousState.content }));
+//           this.setState(previousState => ({ content1: !previousState.content }));
+//        }
+//        else {
+//           // do something else
+//       }
+//     } catch (error) {
+//       // Error retrieving data
+//     }
+// }
+
+
   
   
   componentHideAndShow = () => {
@@ -51,7 +71,7 @@ class LoginScreen extends React.Component {
     const {userId,userPassword} = this.state;
     
     //Mandar datos al servidor
-    fetch('https://react-connection.000webhostapp.com/usuario/login.php',{
+    fetch('http://144.217.85.47/pqrs/user/login.php',{
       method: 'POST',
       header:{
         'Accept':'application/json',
@@ -69,37 +89,40 @@ class LoginScreen extends React.Component {
      .then((responseJson)=>{
        if(responseJson == "ok")
        {
-         const data = {
-           id:this.state.userId,
-           //password:this.state.userPassword
-         }
-         arrayData.push(data);
+         let user = this.state.userId;
+         AsyncStorage.setItem('user', user)
 
-         try{
-          AsyncStorage.getItem('database').then((value)=> {
-            if(value!==null){
-              const d = JSON.parse(value);
-              d.push(data)
-              AsyncStorage.setItem('database', JSON.stringify(d))
+        //  const data = {
+        //    id:this.state.userId,
+        //    //password:this.state.userPassword
+        //  }
+        //  arrayData.push(user);
 
-            }else{
-              AsyncStorage.setItem('database',JSON.stringify(arrayData))
-              // .then(() => {
+        //  try{
+        //   AsyncStorage.getItem('database').then((value)=> {
+        //     if(value!==null){
+        //       const d = JSON.parse(value);
+        //       d.push(data)
+        //       AsyncStorage.setItem('database', JSON.stringify(d))
+
+        //     }else{
+        //       AsyncStorage.setItem('database',JSON.stringify(arrayData))
+        //       // .then(() => {
                 
-              // })
-            }
-          })
-         }
-         catch(error){
+        //       // })
+        //     }
+        //   })
+        //  }
+        //  catch(error){
 
-         }
+        //  }
 
          this.setState(previousState => ({ content: !previousState.content }))
          this.setState(previousState => ({ content1: !previousState.content1 }))
        }
        else
        {
-         Alert.alert("Datos incorrectos");
+         alert("Datos incorrectos");
          
 
        }
@@ -114,7 +137,7 @@ class LoginScreen extends React.Component {
   }
 
   close= () =>{
-    AsyncStorage.removeItem('database');
+    AsyncStorage.removeItem('user');
     this.setState(previousState => ({ content: !previousState.content }))
     this.setState(previousState => ({ content1: !previousState.content1 }))
   }
@@ -132,16 +155,15 @@ focusTheField = (id) => {
 
   render() {
 
+  
 
     return(
 
       <View style={styles.container}>  
 
-      
-
       {
         this.state.content1 ?
-     
+
         <Text style={styles.textStyle}>INICIAR SESIÓN</Text>
         :null
       }

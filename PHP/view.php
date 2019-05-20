@@ -1,14 +1,13 @@
 <?php
 
- session_start();
+
  //error_reporting(0);
 
+ include 'connection.php';
+ //$id = $obj['list'];
 
-    include 'connection.php';
-
-  
-
- $result = mysqli_query($link, "SELECT * FROM radicado");
+  //$result = mysqli_query($link, "SELECT * FROM radicado WHERE id_usuario='$list'");
+  $result = mysqli_query($link, "SELECT * FROM radicado");
 
  if(mysqli_num_rows($result))
  {
@@ -19,10 +18,10 @@
 
  else
  {
-   echo 'No encontrado';
+   $json = json_encode('No encontrado');
 
  }
 echo $json;
- mysqli_close($link);
+// mysqli_close($link);
 
  ?>
